@@ -1,0 +1,23 @@
+runtime: php
+env: flex
+
+runtime_config:
+  document_root: public
+
+# Ensure we skip ".env", which is only for local development
+skip_files:
+  - .env
+
+env_variables:
+  # Put production environment variables here.
+  APP_LOG: errorlog
+  APP_KEY: base64:P7Xx6ApR14eViDwSUpVuaV6ePySIj7JmtPlbQteGXPY=
+  STORAGE_DIR: /tmp
+
+automatic_scaling:
+  min_idle_instances: 0
+  max_idle_instances: 1
+  min_pending_latency: 1000ms
+  max_pending_latency: 5000ms
+  max_concurrent_requests: 50
+
