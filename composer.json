@@ -6,9 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "cache/memcached-adapter": "^1.0",
+        "ext-memcached": "*",
         "fideloper/proxy": "~3.3",
-        "google/cloud": "^0.46",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0"
     },
