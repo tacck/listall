@@ -11,13 +11,30 @@ skip_files:
 env_variables:
   # Put production environment variables here.
   APP_LOG: errorlog
-  APP_KEY: base64:P7Xx6ApR14eViDwSUpVuaV6ePySIj7JmtPlbQteGXPY=
+  APP_KEY: YOUR_APP_KEY
   STORAGE_DIR: /tmp
+  CACHE_DRIVER: memcached
+  SESSION_DRIVER: memcached
+  ## Set these environment variables according to your CloudSQL configuration.
+  DB_CONNECTION: mysql
+#  DB_HOST: localhost
+  DB_DATABASE: laravel
+  DB_USERNAME: root
+  DB_PASSWORD: YOUR_DB_PASSWORD
+  DB_SOCKET: "/cloudsql/YOUR_CLOUDSQL_CONNECTION_NAME"
+  MEMCACHED_USERNAME: "YOUR_MEMCACHED_USERNAME"
+  MEMCACHED_PASSWORD: "YOUR_MEMCACHED_PASSWORD"
+  MEMCACHED_HOST: YOUR_MEMCACHED_HOST
+  MEMCACHED_PORT: YOUR_MEMCACHED_PORT
+
+beta_settings:
+    # for Cloud SQL, set this value to the Cloud SQL connection name,
+    # e.g. "project:region:cloudsql-instance"
+    cloud_sql_instances: "YOUR_CLOUDSQL_CONNECTION_NAME"
 
 automatic_scaling:
   min_idle_instances: 0
-  max_idle_instances: 1
-  min_pending_latency: 1000ms
-  max_pending_latency: 5000ms
+  min_num_instances: 1
+  max_num_instances: 1
   max_concurrent_requests: 50
 
