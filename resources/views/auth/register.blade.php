@@ -61,6 +61,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('htn_name') ? ' has-error' : '' }}">
+                            <label for="htn_name" class="col-md-4 control-label">Hatena Name</label>
+
+                            <div class="col-md-6">
+                                <input id="htn_name" type="text" class="form-control" name="htn_name" value="{{ old('htn_name') }}" required autofocus>
+
+                                @if ($errors->has('htn_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('htn_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
