@@ -18,13 +18,16 @@ class CreateBookmarksTable extends Migration
             $table->string("username");
             $table->string("title");
             $table->string("url");
-            $table->string("permalink")->unique();
+            $table->string("permalink");
             $table->string("comment")->nullable();
             $table->boolean("is_private");
+            $table->boolean("is_read_for_later");
             $table->dateTime("htn_add_datetime");
+            $table->date("htn_add_date");
             $table->integer("user_id")->unsigned();
             $table->timestamps();
-            $table->index(['htn_add_datetime', 'id']);
+            $table->index(['user_id', 'htn_add_date', 'id']);
+            $table->unique(["user_id", "permalink"]);
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
