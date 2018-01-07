@@ -11,6 +11,11 @@
 |
 */
 
+if (\Illuminate\Support\Facades\App::environment('api'))
+{
+    return;
+}
+
 Route::get('/', function () {
     return view('welcome');
 });
