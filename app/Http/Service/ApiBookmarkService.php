@@ -16,6 +16,7 @@ class ApiBookmarkService
      */
     public static function isCollectKey($key)
     {
+        // TODO: ユーザー名とキーの組み合わせでチェックするようにする
         Log::info("key:" . $key);
         Log::info("env_key:" . env('HATENA_BOOKMARK_WEBHOOK_KEY', ''));
         return !is_null($key) && $key !== "" && env("HATENA_BOOKMARK_WEBHOOK_KEY", "") === $key;
@@ -29,13 +30,17 @@ class ApiBookmarkService
      * @param string $comment
      * @param string $is_private
      * @param string $timestamp
+     * @param string $status
      * @return bool
      */
-    public static function commitBookmark($username, $title, $url, $permalink, $comment, $is_private, $timestamp)
+    public static function commitBookmark($username, $title, $url, $permalink, $comment, $is_private, $timestamp, $status)
     {
         $htnUser = User::where('htn_name', $username)->first();
+        if (is_null($htnUser)) {
+            return false;
+        }
 
-        // TODO: 削除対応 sateを見る必要ありそう
+        // TODO: 削除対応 $statusをチェック
 
         $bookmark = null;
         $addedBookmark = Bookmark::where('permalink', $permalink)->first();
