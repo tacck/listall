@@ -17,7 +17,7 @@ class ApiBookmarkControllerTest extends TestCase
         $user = factory(\App\User::class)->create();
 
         $data = [
-            'username' => $user->htn_name,
+            'username' => $user->name,
             'title' => str_random(255),
             'url' => str_random(255),
             'permalink' => str_random(255),
@@ -38,7 +38,7 @@ class ApiBookmarkControllerTest extends TestCase
         $user = factory(\App\User::class)->create();
 
         $data = [
-            'username' => $user->htn_name,
+            'username' => $user->name,
             'title' => str_random(255),
             'url' => str_random(255),
             'permalink' => str_random(255),
@@ -59,7 +59,7 @@ class ApiBookmarkControllerTest extends TestCase
         $user = factory(\App\User::class)->create();
 
         $data = [
-            'username' => $user->name,
+            'username' => substr($user->name, 0, 1),
             'title' => str_random(255),
             'url' => str_random(255),
             'permalink' => str_random(255),

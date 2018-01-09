@@ -35,7 +35,7 @@ class ApiBookmarkService
      */
     public static function commitBookmark($username, $title, $url, $permalink, $comment, $is_private, $timestamp, $status)
     {
-        $htnUser = User::where('htn_name', $username)->first();
+        $htnUser = User::where('name', $username)->first();
         if (is_null($htnUser)) {
             return false;
         }

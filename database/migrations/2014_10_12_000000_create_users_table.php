@@ -16,11 +16,12 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('htn_name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('htn_webhook_token')->nullable()->default("");
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

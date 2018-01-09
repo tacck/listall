@@ -15,7 +15,7 @@
                                 <div class="col-md-1">{{Html::link('/users/' . $user['id'], $user['id'])}}</div>
                                 <div class="col-md-2">{{ $user['name'] }}</div>
                                 <div class="col-md-6">{{ $user['email'] }}</div>
-                                <div class="col-md-3">{{ $user['htn_name'] }}</div>
+                                <div class="col-md-3">{{ $user['htn_webhook_token'] }}</div>
                             </div>
                         @endforeach
                     @endif

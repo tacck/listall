@@ -36,7 +36,7 @@ class ApiBookmarkServiceTest extends TestCase
     {
         $user = factory(\App\User::class)->create();
 
-        $expectedName = $user->htn_name;
+        $expectedName = $user->name;
         $expectedTitle = str_random(255);
         $expectedUrl = str_random(255);
         $expectedPermalink = str_random(255);
@@ -75,7 +75,7 @@ class ApiBookmarkServiceTest extends TestCase
     {
         $user = factory(\App\User::class)->create();
 
-        $expectedName = $user->htn_name;
+        $expectedName = $user->name;
         $expectedTitle = str_random(255);
         $expectedUrl = str_random(255);
         $expectedPermalink = str_random(255);
@@ -117,7 +117,7 @@ class ApiBookmarkServiceTest extends TestCase
         $user = factory(\App\User::class)->create();
 
         // 追加
-        $expectedName = $user->htn_name;
+        $expectedName = $user->name;
         $expectedTitle = str_random(255);
         $expectedUrl = str_random(255);
         $expectedPermalink = str_random(255);
@@ -154,7 +154,7 @@ class ApiBookmarkServiceTest extends TestCase
 
         // 更新
         // ユーザー名(id)とpermalinkがでユニーク判定するので、この二つは更新しない。
-        //        $expectedName = $user->htn_name;
+        //        $expectedName = $user->name;
         $expectedTitle = str_random(255);
         $expectedUrl = str_random(255);
         //        $expectedPermalink = str_random(255); permalink
@@ -193,7 +193,7 @@ class ApiBookmarkServiceTest extends TestCase
     {
         $user = factory(\App\User::class)->create();
 
-        $expectedName = $user->name;
+        $expectedName = substr($user->name, 0, 1);
         $expectedTitle = str_random(255);
         $expectedUrl = str_random(255);
         $expectedPermalink = str_random(255);

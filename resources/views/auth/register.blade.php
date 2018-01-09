@@ -11,20 +11,6 @@
                     <form class="form-horizontal" method="POST" action="{{ Helper::routeEx('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
@@ -61,15 +47,29 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('htn_name') ? ' has-error' : '' }}">
-                            <label for="htn_name" class="col-md-4 control-label">Hatena Name</label>
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Hatena Name</label>
 
                             <div class="col-md-6">
-                                <input id="htn_name" type="text" class="form-control" name="htn_name" value="{{ old('htn_name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
-                                @if ($errors->has('htn_name'))
+                                @if ($errors->has('name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('htn_name') }}</strong>
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('htn_webhook_token') ? ' has-error' : '' }}">
+                            <label for="htn_webhook_token" class="col-md-4 control-label">Hatena WebHook Token</label>
+
+                            <div class="col-md-6">
+                                <input id="htn_webhook_token" type="text" class="form-control" name="htn_webhook_token" value="{{ old('htn_webhook_token') }}" required autofocus>
+
+                                @if ($errors->has('htn_webhook_token'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('htn_webhook_token') }}</strong>
                                     </span>
                                 @endif
                             </div>
