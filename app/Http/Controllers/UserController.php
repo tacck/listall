@@ -1,10 +1,14 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserEditPost;
 use App\Http\Service\UserService;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -47,19 +51,36 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function edit($message)
+    public function edit(User $user)
     {
         // GET '/users/{id}/edit'
         // TODO: 実装
+        return view('users.edit', compact('user'));
     }
 
-    public function update($message)
+    /**
+     * PUT '/users/{id}'
+     *
+     * @param UserEditPost $request
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(UserEditPost $request, User $user)
     {
-        // POST '/users/{id}'
-        // TODO: 実装
+        $params = $request->all();
+
+        try {
+            UserService::update($user, $params['name'], $params['htn_webhook_token'], $params['password']);
+        } catch (\Throwable $e) {
+            // TODO: ページに留まる
+            Log::error($e->getMessage());
+            Log::error($e->getTraceAsString());
+        }
+
+        return redirect('/users');
     }
 
-    public function destroy($message)
+    public function destroy(User $user)
     {
         // DELETE '/users/{id}'
         // TODO: 実装
