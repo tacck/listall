@@ -228,8 +228,6 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
-        'Helper' => App\Helper\Helper::class,
     ],
 
 ];
