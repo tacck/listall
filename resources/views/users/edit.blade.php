@@ -10,7 +10,7 @@
                         <div>
                             @if (isset($user))
                                 <form class="form-horizontal" method="POST"
-                                      action="{{ Helper::routeEx('users.update', ['id' => 1]) }}">
+                                      action="{{ route('users.update', ['id' => 1]) }}">
                                     <input name="_method" type="hidden" value="PUT">
                                     {{ csrf_field() }}
                                     <div class="form-group">

@@ -17,7 +17,7 @@
                                     <div class="col-md-3">{{ $user['htn_webhook_token'] }}</div>
                                 </div>
                             @endif
-                        </div>f
+                        </div>
                     </div>
                 </div>
             </div>
