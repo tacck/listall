@@ -23,7 +23,8 @@ class Helper
         if (app()->isLocal()) {
             return route($name, $parameters, $absolute);
         } else {
-            return app('url')->secure($name, $parameters, $absolute);
+            return route($name, $parameters, $absolute);
+//            return app('url')->secure($name, $parameters);
         }
 
     }
