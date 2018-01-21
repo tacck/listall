@@ -39,6 +39,7 @@ class ApiBookmarkController extends Controller
             )) {
                 $status = Response::HTTP_INTERNAL_SERVER_ERROR;
                 $message = "internal server error";
+                Log::error("commit failed");
             }
         } catch (\Exception $e) {
             $status = Response::HTTP_INTERNAL_SERVER_ERROR;
