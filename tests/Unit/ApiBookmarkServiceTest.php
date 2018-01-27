@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Bookmark;
 use App\Http\Service\ApiBookmarkService;
+use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -214,5 +214,60 @@ class ApiBookmarkServiceTest extends TestCase
         );
 
         $this->assertFalse($actual);
+    }
+
+    public function testToArray()
+    {
+        $user = factory(\App\User::class)->create();
+
+        $expectedName = $user->name;
+        $expectedTitle = str_random(255);
+        $expectedUrl = str_random(255);
+        $expectedPermalink = str_random(255);
+        $expectedComment = str_random(255);
+        $expectedIsPrivate = random_int(0, 1);
+        $expectedTimestamp = Carbon::now();
+
+        $actual = ApiBookmarkService::toArray($expectedName,
+            $expectedTitle,
+            $expectedUrl,
+            $expectedPermalink,
+            $expectedComment,
+            $expectedIsPrivate,
+            $expectedTimestamp->format(DATE_W3C)
+        );
+
+        $this->assertArrayHasKey('username', $actual);
+        $this->assertEquals($expectedName, $actual['username']);
+
+        $this->assertArrayHasKey('title', $actual);
+        $this->assertEquals($expectedTitle, $actual['title']);
+
+        $this->assertArrayHasKey('url', $actual);
+        $this->assertEquals($expectedUrl, $actual['url']);
+
+        $this->assertArrayHasKey('permalink', $actual);
+        $this->assertEquals($expectedPermalink, $actual['permalink']);
+
+        $this->assertArrayHasKey('comment', $actual);
+        $this->assertEquals($expectedComment, $actual['comment']);
+
+        $this->assertArrayHasKey('is_private', $actual);
+        $this->assertEquals($expectedIsPrivate, $actual['is_private']);
+
+        $this->assertArrayHasKey('is_read_for_later', $actual);
+        $this->assertEquals(0, $actual['is_read_for_later']);
+
+        $this->assertArrayHasKey('htn_add_datetime', $actual);
+        $this->assertEquals($expectedTimestamp->format("Y-m-d H:i:s"), $actual['htn_add_datetime']);
+
+        $this->assertArrayHasKey('htn_add_date', $actual);
+        $this->assertEquals($expectedTimestamp->format("Y-m-d"), $actual['htn_add_date']);
+
+        $this->assertArrayHasKey('user_id', $actual);
+        $this->assertEquals($user->id, $actual['user_id']);
+
+        $this->assertArrayHasKey('created_at', $actual);
+        $this->assertArrayHasKey('updated_at', $actual);
     }
 }
