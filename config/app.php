@@ -228,6 +228,7 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Feeds' => willvincent\Feeds\Facades\FeedsFacade::class,
     ],
 
 ];

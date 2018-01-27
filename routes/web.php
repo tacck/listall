@@ -35,5 +35,10 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
+    Route::prefix('atomUploading')->group(function () {
+        Route::get('/', 'AtomUploadingController@index');
+        Route::post('/', 'AtomUploadingController@store');
+    });
+
     Route::resource('users', 'UserController');
 });
