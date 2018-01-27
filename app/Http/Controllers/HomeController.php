@@ -28,8 +28,6 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        $memcache = new Memcached;
-
         return view('welcome');
     }
 }
