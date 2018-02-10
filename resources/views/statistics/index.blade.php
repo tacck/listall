@@ -16,6 +16,8 @@
                                 <div class="col-md-6">{{ $bookmark['count'] }}</div>
                             </div>
                         @endforeach
+
+                        {{ $bookmarks->links() }}
                     @endif
                     </div>
                 </div>
