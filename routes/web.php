@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('statistics')->group(function () {
         Route::get('/', 'StatisticController@index');
-
+//        Route::get('/monthly', 'StatisticController@monthly');
     });
 
     Route::prefix('atomUploading')->group(function () {
